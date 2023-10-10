@@ -6,7 +6,7 @@ Find reads not mapped by srnaMapper.
 Using `git`:
 
     git clone https://github.com/mzytnicki/get_unmapped.git
-    cd https://github.com/mzytnicki/get_unmapped.git
+    cd get_unmapped
 
 Or download *via* link https://github.com/mzytnicki/get_unmapped/archive/refs/heads/main.zip and uncompress.
 
@@ -30,3 +30,10 @@ In this case, you can type:
 Using bash, you can still use a BAM file, and a compressed FASTQ file, using the following command:
 
     ./get_unmapped <( samtools view file.bam ) <( zcat file.fastq.gz ) > file_unmapped.fastq
+
+## What `get_unmapped` does
+
+This tools only retrieves the FASTQ sequences that are not present in the SAM file.
+
+Specifically, if a read can be mapped several times, `srnaMapper` will output this read, but it will flag it as unmapped.
+This tool, `get_unmapped`, will not retrieve these reads.
